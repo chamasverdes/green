@@ -6,9 +6,9 @@
   <title>Ajuda - Projeto</title>
   <link rel="stylesheet" href="geral.css">
 </head>
-<body>
+<body class="ajuda-page">
 
-  
+
   <header class="topbar" role="banner">
     <div class="container">
       <div class="brand-left">
@@ -29,39 +29,74 @@
     </div>
   </header>
 
-  
-  <main class="main-content">
+
+ 
+  <main class="main-content ajuda">
     <div class="title-section">
-      <h1 class="help-title">COMO PODEMOS AJUDAR?</h1>
+      <h1 class="title">COMO PODEMOS AJUDAR?</h1>
     </div>
+
 
     <div class="search-container">
       <span class="search-icon">🔍</span>
       <input type="text" class="search-input" placeholder="Descreva o problema">
     </div>
 
+
     <section class="suggestions">
       <div class="suggestion-box">
-        <strong>Como fazer uma denúncia?</strong>
-        <p>Saiba o passo a passo para registrar sua denúncia de forma segura e anônima.</p>
+        <button class="faq-question">Como fazer uma denúncia?</button>
+        <p class="faq-answer">Saiba o passo a passo para registrar sua denúncia de forma segura e anônima.</p>
       </div>
 
-      <div class="suggestion-box">
-        <strong>Posso acompanhar minha denúncia?</strong>
-        <p>Veja como acompanhar o andamento do seu caso e receber atualizações.</p>
-      </div>
 
       <div class="suggestion-box">
-        <strong>Quais tipos de problemas posso relatar?</strong>
-        <p>Entenda o que pode ou não ser denunciado dentro da plataforma.</p>
+        <button class="faq-question">Posso acompanhar minha denúncia?</button>
+        <p class="faq-answer">Veja como acompanhar o andamento do seu caso e receber atualizações.</p>
+      </div>
+
+
+      <div class="suggestion-box">
+        <button class="faq-question">Quais tipos de problemas posso relatar?</button>
+        <p class="faq-answer">Entenda o que pode ou não ser denunciado dentro da plataforma.</p>
       </div>
     </section>
   </main>
 
-  
-  <footer class="footer">
+
+ 
+  <footer class="footer ajuda">
     <p>© 2025 Projeto — Todos os direitos reservados.</p>
   </footer>
+
+
+ 
+  <script>
+    // --- Busca dinâmica ---
+    const searchInput = document.querySelector('.search-input');
+    const suggestionBoxes = document.querySelectorAll('.suggestion-box');
+
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+
+
+      suggestionBoxes.forEach(box => {
+        const text = box.innerText.toLowerCase();
+        box.style.display = text.includes(searchTerm) ? 'block' : 'none';
+      });
+    });
+
+
+    // --- FAQ clicável ---
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        answer.classList.toggle('show');
+      });
+    });
+  </script>
+
 
 </body>
 </html>
